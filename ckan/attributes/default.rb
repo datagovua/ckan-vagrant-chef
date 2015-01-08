@@ -1,0 +1,7 @@
+default[:ckan][:user] = "ckan"
+default[:ckan][:project_name] = "default"
+default[:ckan][:site_url] = "http://localhost:5000"
+default[:ckan][:sql_password] = "pass"
+default[:ckan][:solr_url] = "http://127.0.0.1:8983/solr"
+default[:repository][:url] = "https://github.com/ckan/ckan.git"
+default[:repository][:commit] = "master"
