@@ -11,5 +11,6 @@ default[:ckan][:config_dir] = "/etc/ckan/#{default[:ckan][:project_name]}"
 default[:ckan][:datastore][:sql_user] = "datastore_#{default[:ckan][:project_name]}"  # readonly db user
 default[:ckan][:datastore][:sql_db_name] = "datastore_#{default[:ckan][:project_name]}"
 
+# The CKAN version to install.
 default[:repository][:url] = "https://github.com/ckan/ckan.git"
 default[:repository][:commit] = "master"
