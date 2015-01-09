@@ -17,13 +17,13 @@ Vagrant.configure(2) do |config|
 
   config.vm.synced_folder "synced_folders/src", "/usr/lib/ckan/default/src",
                           id: "ckan_src",
-                          owner: "ckan",
-                          group: "ckan",
+                          owner: "vagrant",
+                          group: "vagrant",
                           mount_options: ["dmode=775","fmode=664"]
   config.vm.synced_folder "synced_folders/config", "/etc/ckan/default",
                           id: "ckan_config",
-                          owner: "ckan",
-                          group: "ckan",
+                          owner: "vagrant",
+                          group: "vagrant",
                           mount_options: ["dmode=775","fmode=664"]
 
   config.vm.provision :chef_solo do |chef|

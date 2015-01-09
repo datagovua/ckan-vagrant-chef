@@ -1,4 +1,6 @@
-default[:ckan][:user] = "ckan"
+# for development deploys using Vagrant, `[:ckan][:user]` must be 'vagrant' to ensure
+# synced_folders have correct permissions
+default[:ckan][:user] = "vagrant"
 default[:ckan][:project_name] = "default"
 default[:ckan][:site_url] = "http://localhost:5000"
 default[:ckan][:solr_url] = "http://127.0.0.1:8983/solr"

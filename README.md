@@ -31,6 +31,9 @@ To make it easier to edit CKAN source and configuration files on the host machin
 * `synced_folders/config` - by default, maps to `/etc/ckan/default` on the guest VM.
 * `synced_folders/src` - by default, maps to `/usr/lib/ckan/default/src` on the guest VM.
 
+:::TODO::: stored files directory needs to be defined and mapped, and probably needs to belong to the www-data group.
+:::TODO::: probably need to install imagemagick too with apt package.
+
 These mappings are defined in the `Vagrantfile`.
 
 
