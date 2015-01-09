@@ -1,7 +1,20 @@
-# PROJECT_NAME = node[:ckan][:project_name]
-# CONFIG_DIR = "/etc/ckan/#{PROJECT_NAME}"
+include_recipe "apache2::mod_wsgi"
 
-# file "#{CONFIG_DIR}/production.ini" do
-#   content IO.read("#{CONFIG_DIR}/development.ini")
-#   action :create
-# end
+#
+# Mod RPAF
+#
+
+package "libapache2-mod-rpaf" do
+  action :install
+end
+
+apache_module "rpaf" do
+  enable true
+  conf true
+end
+
+
+file "#{node[:ckan][:config_dir]}/production.ini" do
+  content IO.read("#{node[:ckan][:config_dir]}/development.ini")
+  action :create
+end
