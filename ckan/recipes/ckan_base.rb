@@ -1,3 +1,5 @@
+# Installs base ckan instance and sets up development.ini.
+
 ENV['VIRTUAL_ENV'] = node[:ckan][:virtual_env_dir]
 ENV['PATH'] = "#{ENV['VIRTUAL_ENV']}/bin:#{ENV['PATH']}"
 SOURCE_DIR = "#{ENV['VIRTUAL_ENV']}/src"

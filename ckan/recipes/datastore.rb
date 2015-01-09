@@ -1,5 +1,5 @@
 # Installs and configures the datastore extension
-# Must be run after ckan::ckan_development recipe.
+# Must be run after ckan::base recipe.
 
 ENV['VIRTUAL_ENV'] = node[:ckan][:virtual_env_dir]
 ENV['PATH'] = "#{ENV['VIRTUAL_ENV']}/bin:#{ENV['PATH']}"
