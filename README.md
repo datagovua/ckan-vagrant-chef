@@ -4,15 +4,13 @@ A Vagrant deployment of CKAN using Chef as provisioner.
 
 Creates an Ubuntu 12.04 VM running Postgres 9.4, Solr, Jetty, CKAN (master) and Datastore.
 
-## Installation
+### For Development
 
 Install [Vagrant](https://www.vagrantup.com/), clone this repository, then:
 
 `$ vagrant up`
 
-### For Development
-
-Login to the Vagrant VM:
+Log in to the Vagrant VM:
 
 `$ vagrant ssh`
 
@@ -20,14 +18,25 @@ Start the development server in the Vagrant VM:
 
 ```
 $ cd /usr/lib/ckan/default/src/ckan
-$ . ../../bin/activate
+$ source ../../bin/activate
 $ paster serve /etc/ckan/default/development.ini
 ```
 
 View CKAN in your browser at `http://localhost:5000`.
 
+#### Vagrant synced folders
+
+To make it easier to edit CKAN source and configuration files on the host machine, Vagrant synced_folders are available.
+
+* `synced_folders/config` - by default, maps to `/etc/ckan/default` on the guest VM.
+* `synced_folders/src` - by default, maps to `/usr/lib/ckan/default/src` on the guest VM.
+
+These mappings are defined in the `Vagrantfile`.
+
 
 ### For Production
+
+:::TODO:::
 
 
 ## Recipes

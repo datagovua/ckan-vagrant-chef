@@ -11,12 +11,20 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 5000, host: 5000
 
   config.vm.provider "virtualbox" do |vb|
-    # Display the VirtualBox GUI when booting the machine
-    # vb.gui = true
-
     # Customize the amount of memory on the VM:
     vb.memory = "1024"
   end
+
+  config.vm.synced_folder "synced_folders/src", "/usr/lib/ckan/default/src",
+                          id: "ckan_src",
+                          owner: "ckan",
+                          group: "ckan",
+                          mount_options: ["dmode=775","fmode=664"]
+  config.vm.synced_folder "synced_folders/config", "/etc/ckan/default",
+                          id: "ckan_config",
+                          owner: "ckan",
+                          group: "ckan",
+                          mount_options: ["dmode=775","fmode=664"]
 
   config.vm.provision :chef_solo do |chef|
     chef.run_list = [

@@ -20,3 +20,10 @@ bin/*
 .kitchen.local.yml
 
 .DS_Store
+
+# Ignore everything in these directories
+synced_folders/config/*
+synced_folders/src/*
+# except these empty files!
+!synced_folders/config/.gitkeep
+!synced_folders/src/.gitkeep
