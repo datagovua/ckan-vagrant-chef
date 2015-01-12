@@ -46,17 +46,19 @@ These mappings are defined in the `Vagrantfile`.
 
 Some useful Vagrant commands:
 
-`$ vagrant up`: Create and configure the guest machine.
+`$ vagrant up` Create and configure the guest machine.
 
-`$ vagrant suspend`: Suspend the current state of the guest machine.
+`$ vagrant ssh` Login to the guest machine.
 
-`$ vagrant halt`: Attempt a shutdown of the guest machine.
+`$ vagrant suspend` Suspend the current state of the guest machine.
 
-`$ vagrant provision`: Re-provision the guest machine according to the Chef cookbook.
+`$ vagrant halt` Attempt a shutdown of the guest machine.
 
-`$ vagrant reload`: Restart the guest machine. Add the `--provision` flag to also re-provision.
+`$ vagrant provision` Re-provision the guest machine according to the Chef cookbook.
 
-`$ vagrant destroy`: Stops the guest machine and removes all of its resources. This will destroy the CKAN database and any uncommitted changes to the source code in the guest machine.
+`$ vagrant reload` Restart the guest machine. Add the `--provision` flag to also re-provision.
+
+`$ vagrant destroy` Stops the guest machine and removes all of its resources. This will destroy the CKAN database and any uncommitted changes to the source code in the guest machine.
 
 See [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html) for a full list of commands.
 
