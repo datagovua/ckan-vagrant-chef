@@ -6,7 +6,15 @@ Creates an Ubuntu 12.04 VM running Postgres 9.4, Solr, Jetty, CKAN (master) and 
 
 ### For Development
 
-Install [Vagrant](https://www.vagrantup.com/), clone this repository, then:
+Install Vagrant and Berkshelf:
+
+1. Install [Vagrant](https://www.vagrantup.com/)
+2. Install Berkshelf by installing the [ChefDK](https://downloads.chef.io/chef-dk/)
+3. Install the vagrant-berkshelf plugin with:
+
+`$ vagrant plugin install vagrant-berkshelf`
+
+Clone this repository, then:
 
 `$ vagrant up`
 
