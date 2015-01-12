@@ -25,6 +25,11 @@ Vagrant.configure(2) do |config|
                           owner: "vagrant",
                           group: "vagrant",
                           mount_options: ["dmode=775","fmode=664"]
+  config.vm.synced_folder "synced_folders/file_storage", "/var/lib/ckan/default",
+                          id: "ckan_file_storage",
+                          owner: "vagrant",
+                          group: "www-data",
+                          mount_options: ["dmode=775","fmode=664"]
 
   config.vm.provision :chef_solo do |chef|
     chef.run_list = [

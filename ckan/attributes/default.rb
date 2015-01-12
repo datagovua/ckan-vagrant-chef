@@ -9,6 +9,7 @@ default[:ckan][:sql_user] = "ckan_#{default[:ckan][:project_name]}"
 default[:ckan][:sql_db_name] = "ckan_#{default[:ckan][:project_name]}"
 default[:ckan][:virtual_env_dir] = "/usr/lib/ckan/#{default[:ckan][:project_name]}"
 default[:ckan][:config_dir] = "/etc/ckan/#{default[:ckan][:project_name]}"
+default[:ckan][:file_storage_dir] = "/var/lib/ckan/#{default[:ckan][:project_name]}"
 
 default[:ckan][:datastore][:sql_user] = "datastore_#{default[:ckan][:project_name]}"  # readonly db user
 default[:ckan][:datastore][:sql_db_name] = "datastore_#{default[:ckan][:project_name]}"

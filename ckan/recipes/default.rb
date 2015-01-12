@@ -1,5 +1,6 @@
 # Install and configure ckan instance and dependencies.
 
+include_recipe "apt"
 include_recipe "git"
 include_recipe "python"
 include_recipe "postgresql::server"

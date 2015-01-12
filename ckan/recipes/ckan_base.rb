@@ -7,6 +7,7 @@ CKAN_DIR = "#{SOURCE_DIR}/ckan"
 
 ESCAPED_SITE_URL = node[:ckan][:site_url].gsub('/','\\/')
 ESCAPED_SOLR_URL = node[:ckan][:solr_url].gsub('/','\\/')
+ESCAPED_STORAGE_PATH = node[:ckan][:file_storage_dir].gsub('/','\\/')
 
 # Create user
 user node[:ckan][:user] do
@@ -79,7 +80,7 @@ postgresql_database node[:ckan][:sql_db_name] do
   encoding "utf8"
 end
 
-# Create /etc/ckan directory
+# Create config directory
 directory node[:ckan][:config_dir] do
   owner node[:ckan][:user]
   group node[:ckan][:user]
@@ -146,4 +147,18 @@ link "#{node[:ckan][:config_dir]}/who.ini" do
   group node[:ckan][:user]
   to "#{SOURCE_DIR}/ckan/ckan/config/who.ini"
   action :create
+end
+
+# Create file storage directory
+directory node[:ckan][:file_storage_dir] do
+  owner node[:ckan][:user]
+  group node[:ckan][:user]
+  recursive true
+  action :create
+end
+# Set storage path in config file
+execute "set storage path in config file" do
+  user node[:ckan][:user]
+  cwd node[:ckan][:config_dir]
+  command "sed -i -e 's/.*ckan.storage_path.*/ckan.storage_path=#{ESCAPED_STORAGE_PATH}/' development.ini"
 end

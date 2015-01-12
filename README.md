@@ -34,15 +34,31 @@ View CKAN in your browser at `http://localhost:5000`.
 
 #### Vagrant synced folders
 
-To make it easier to edit CKAN source and configuration files on the host machine, Vagrant synced_folders are available.
+To make it easier to edit CKAN source and configuration files from the host machine, Vagrant synced_folders are defined as follows by default.
 
-* `synced_folders/config` - by default, maps to `/etc/ckan/default` on the guest VM.
-* `synced_folders/src` - by default, maps to `/usr/lib/ckan/default/src` on the guest VM.
-
-:::TODO::: stored files directory needs to be defined and mapped, and probably needs to belong to the www-data group.
-:::TODO::: probably need to install imagemagick too with apt package.
+* `synced_folders/config`: maps to `/etc/ckan/default` on the guest VM.
+* `synced_folders/src`: maps to `/usr/lib/ckan/default/src` on the guest VM.
+* `synced_folders/file_storage`: maps to `/var/lib/ckan/default` on the guest VM.
 
 These mappings are defined in the `Vagrantfile`.
+
+#### Vagrant commands
+
+Some useful Vagrant commands:
+
+`$ vagrant up`: Create and configure the guest machine.
+
+`$ vagrant suspend`: Suspend the current state of the guest machine.
+
+`$ vagrant halt`: Attempt a shutdown of the guest machine.
+
+`$ vagrant provision`: Re-provision the guest machine according to the Chef cookbook.
+
+`$ vagrant reload`: Restart the guest machine. Add the `--provision` flag to also re-provision.
+
+`$ vagrant destroy`: Stops the guest machine and removes all of its resources. This will destroy the CKAN database and any uncommitted changes to the source code in the guest machine.
+
+See [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html) for a full list of commands.
 
 
 ### For Production

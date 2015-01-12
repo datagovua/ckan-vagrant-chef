@@ -6,7 +6,7 @@ cookbook 'python'
 cookbook 'build-essential'
 cookbook 'postgresql', git: 'git://github.com/phlipper/chef-postgresql'
 cookbook 'java'
+# cookbook 'apache2'
 
-# some cookbooks will still be specific to your project
-# and can continue to be managed in your project's repository
+# project specific cookbooks
 cookbook "ckan",  path: "ckan"
