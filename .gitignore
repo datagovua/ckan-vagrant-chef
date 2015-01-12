@@ -22,10 +22,8 @@ bin/*
 .DS_Store
 
 # Ignore everything in these directories
-synced_folders/config/*
-synced_folders/src/*
-synced_folders/file_storage/*
-# except these empty files!
-!synced_folders/config/.gitkeep
-!synced_folders/src/.gitkeep
-!synced_folders/file_storage/.gitkeep
+synced_folders/*
+synced_folders/*
+synced_folders/*
+# Except this .gitkeep file
+!synced_folders/.gitkeep

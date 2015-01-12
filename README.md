@@ -63,6 +63,10 @@ Some useful Vagrant commands:
 
 See [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html) for a full list of commands.
 
+#### Troubleshooting
+
+If you get errors using `$ vagrant up` after `$ vagrant destroy`, you may need to delete the `synced_folders/config` directory to ensure a new `development.ini` file is created.
+
 
 ### For Production
 
