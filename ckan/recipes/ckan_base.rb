@@ -88,12 +88,18 @@ directory node[:ckan][:config_dir] do
   action :create
 end
 
-# Create configuration file
+# Create configuration file in CKAN directory
 execute "make paster's config file" do
   user node[:ckan][:user]
-  cwd node[:ckan][:config_dir]
-  command "paster make-config ckan development.ini --no-interactive"
-  creates "#{node[:ckan][:config_dir]}/development.ini"
+  cwd CKAN_DIR
+  command "paster make-config ckan development.ini.tmp --no-interactive"
+  creates "#{CKAN_DIR}/development.ini.tmp"
+end
+
+# Copy config file to config directory
+file "#{node[:ckan][:config_dir]}/development.ini" do
+  content lazy { IO.read("#{CKAN_DIR}/development.ini.tmp") }
+  action :create
 end
 
 # Edit configuration file
