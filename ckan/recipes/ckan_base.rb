@@ -124,20 +124,19 @@ template "/etc/default/jetty" do
     :java_home => node["java"]["java_home"]
   })
 end
-execute "setup solr's schema" do
-  command "sudo ln -f -s #{CKAN_DIR}/ckan/config/solr/schema.xml /etc/solr/conf/schema.xml"
-  action :run
+link "/etc/solr/conf/schema.xml" do
+  to "#{CKAN_DIR}/ckan/config/solr/schema.xml"
+  action :create
 end
-service "jetty" do
-  supports :status => true, :restart => true, :reload => true
-  action [:enable, :start]
-end
-
 # Configure solr url
 execute "edit configuration file to setup solr url" do
   user node[:ckan][:user]
   cwd node[:ckan][:config_dir]
   command "sed -i -e 's/.*solr_url.*/solr_url=#{ESCAPED_SOLR_URL}/' development.ini"
+end
+service "jetty" do
+  supports :status => true, :restart => true, :reload => true
+  action [:enable, :start]
 end
 
 # Create database tables

@@ -4,18 +4,19 @@ A Vagrant deployment of CKAN using Chef as provisioner.
 
 Creates an Ubuntu 12.04 VM running Postgres 9.4, Solr, Jetty, CKAN (master) and Datastore.
 
-### For Development
+## Installation
 
-Install VirtualBox, Vagrant and Berkshelf:
+Install VirtualBox, Vagrant, Berkshelf and vagrant plugins:
 
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2. Install [Vagrant](https://www.vagrantup.com/)
 3. Install Berkshelf by installing the [ChefDK](https://downloads.chef.io/chef-dk/)
-4. Install the vagrant-berkshelf plugin with:
-
-`$ vagrant plugin install vagrant-berkshelf`
+4. Install vagrant-berkshelf plugin with: `$ vagrant plugin install vagrant-berkshelf`
+5. Install vagrant-hostmanager plugin with: `$ vagrant plugin install vagrant-hostmanager`
 
 Clone this repository, then:
+
+### For Development
 
 `$ vagrant up`
 
@@ -33,7 +34,17 @@ $ paster serve /etc/ckan/default/development.ini
 
 View CKAN in your browser at `http://localhost:5000`.
 
-#### Vagrant synced folders
+### For Production
+
+Add `recipe[ckan::ckan_production]` to your run_list to install the dependencies needed for a production instance of CKAN that uses Apache/Nginx.
+
+To use with Vagrant, uncomment `include_recipe "ckan::ckan_production"` in the default recipe `ckan/recipes/default.rb`, then,
+
+`$ vagrant up`
+
+The production instance can be viewed with the host machine's browser at `http://default.ckanhosted.dev/`, by default.
+
+## Vagrant synced folders
 
 To make it easier to edit CKAN source and configuration files from the host machine, Vagrant synced_folders are defined as follows by default.
 
@@ -43,7 +54,7 @@ To make it easier to edit CKAN source and configuration files from the host mach
 
 These mappings are defined in the `Vagrantfile`.
 
-#### Vagrant commands
+## Vagrant commands
 
 Some useful Vagrant commands:
 
@@ -63,15 +74,9 @@ Some useful Vagrant commands:
 
 See [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html) for a full list of commands.
 
-
-### For Production
-
-:::TODO:::
-
-
 ## Recipes
 
-* `recipe[ckan::default]` collects together the recipes below.
+* `recipe[ckan::default]` collects together `ckan_base` and `ckan_datastore`.
 * `recipe[ckan::ckan_base]` sets up everything needed for a CKAN instance ready for development.
 * `recipe[ckan::ckan_datastore]` sets up the Datastore extension.
 * `recipe[ckan::ckan_production]` sets up an Apache/Nginx server for serving CKAN in production.
