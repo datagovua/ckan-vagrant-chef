@@ -10,4 +10,4 @@ include_recipe "java"
 include_recipe "ckan::ckan_base"
 include_recipe "ckan::ckan_datastore"
 # include_recipe "ckan::ckan_production"
-# include_recipe "ckan::ckan_tests" # takes ages, but uncomment if you want to run them
+# include_recipe "ckan::ckan_tests" # uncomment to set up tests

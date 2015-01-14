@@ -1,4 +1,4 @@
-# Run tests for ckan and ckanext (optional)
+# Sets up test database and tables for ckan and ckanext (optional)
 
 TEST_SQL_DB_NAME = "#{node[:ckan][:sql_db_name]}_test"
 TEST_DATASTORE_SQL_DB_NAME = "#{node[:ckan][:datastore][:sql_db_name]}_test"
@@ -47,9 +47,10 @@ execute "set permissions on test database tables" do
   command "paster --plugin=ckan datastore set-permissions -c test-core.ini | sudo -u postgres psql"
 end
 
-# Run the tests!
-execute "run tests" do
-  user node[:ckan][:user]
-  cwd CKAN_DIR
-  command "nosetests --ckan --reset-db --with-pylons=test-core.ini --nologcapture ckan ckanext"
-end
+# Best to run the tests from the command line of the provisioned machine
+# itself, but uncomment this if you don't mind waiting for the tests to run.
+# execute "run tests" do
+#   user node[:ckan][:user]
+#   cwd CKAN_DIR
+#   command "nosetests --ckan --reset-db --with-pylons=test-core.ini --nologcapture ckan ckanext"
+# end

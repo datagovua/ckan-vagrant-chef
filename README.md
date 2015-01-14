@@ -80,7 +80,7 @@ See [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html) for a f
 * `recipe[ckan::ckan_base]` sets up everything needed for a CKAN instance ready for development.
 * `recipe[ckan::ckan_datastore]` sets up the Datastore extension.
 * `recipe[ckan::ckan_production]` sets up an Apache/Nginx server for serving CKAN in production.
-* `recipe[ckan::ckan_tests]` runs ckan and ckanext tests.
+* `recipe[ckan::ckan_tests]` sets up test database for ckan and ckanext tests.
 
 ## Attributes
 
