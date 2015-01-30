@@ -34,6 +34,14 @@ $ paster serve /etc/ckan/default/development.ini
 
 View CKAN in your browser at `http://localhost:5000`.
 
+If you're working on frontend development and want to watch for changes to less files, run the `less` file from the ckan source directory:
+
+```
+$ cd /usr/lib/ckan/default/src/ckan
+$ source ../../bin/activate
+$ node ./bin/less
+```
+
 ### For Production
 
 Add `recipe[ckan::ckan_production]` to your run_list to install the dependencies needed for a production instance of CKAN that uses Apache/Nginx.

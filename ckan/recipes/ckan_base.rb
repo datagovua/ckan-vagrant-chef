@@ -1,5 +1,7 @@
 # Installs base ckan instance and sets up development.ini.
 
+include_recipe "nodejs::nodejs_from_package"
+
 ENV['VIRTUAL_ENV'] = node[:ckan][:virtual_env_dir]
 ENV['PATH'] = "#{ENV['VIRTUAL_ENV']}/bin:#{ENV['PATH']}"
 SOURCE_DIR = "#{ENV['VIRTUAL_ENV']}/src"
@@ -166,4 +168,9 @@ execute "set storage path in config file" do
   user node[:ckan][:user]
   cwd node[:ckan][:config_dir]
   command "sed -i -e 's/.*ckan.storage_path.*/ckan.storage_path=#{ESCAPED_STORAGE_PATH}/' development.ini"
+end
+
+execute "install less and nodewatch" do
+  cwd "#{CKAN_DIR}"
+  command "sudo npm install less@1.7.5 nodewatch"
 end
