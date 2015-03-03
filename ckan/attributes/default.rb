@@ -16,7 +16,7 @@ default[:ckan][:datastore][:sql_db_name] = "datastore_#{default[:ckan][:project_
 
 # The CKAN version to install.
 default[:repository][:url] = "https://github.com/ckan/ckan.git"
-default[:repository][:commit] = "master"
+default[:repository][:commit] = "release-v2.3"
 
 # Apache config for production
 default[:apache][:server_name] = "default.ckanhosted.dev"

@@ -2,7 +2,7 @@
 
 A Vagrant deployment of CKAN using Chef as provisioner.
 
-Creates an Ubuntu 12.04 VM running Postgres 9.4, Solr, Jetty, CKAN (master) and Datastore.
+Sets up remote machine to run Postgres 9.4, Solr, Jetty, CKAN (2.3) and Datastore.
 
 ## Installation
 
@@ -13,6 +13,7 @@ Install VirtualBox, Vagrant, Berkshelf and vagrant plugins:
 3. Install Berkshelf by installing the [ChefDK](https://downloads.chef.io/chef-dk/)
 4. Install vagrant-berkshelf plugin with: `$ vagrant plugin install vagrant-berkshelf`
 5. Install vagrant-hostmanager plugin with: `$ vagrant plugin install vagrant-hostmanager`
+5. Install vagrant-managed-servers plugin with: `vagrant plugin install vagrant-managed-servers`
 
 Clone this repository, then:
 
@@ -49,6 +50,8 @@ Add `recipe[ckan::ckan_production]` to your run_list to install the dependencies
 To use with Vagrant, uncomment `include_recipe "ckan::ckan_production"` in the default recipe `ckan/recipes/default.rb`, then,
 
 `$ vagrant up`
+
+`$ vagrant provision`
 
 The production instance can be viewed with the host machine's browser at `http://default.ckanhosted.dev/`, by default.
 
