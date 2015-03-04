@@ -6,9 +6,9 @@ Sets up remote machine to run Postgres 9.4, Solr, Jetty, CKAN (2.3) and Datastor
 
 ## Installation
 
-Install VirtualBox, Vagrant, Berkshelf and vagrant plugins:
+Install Ubuntu, Vagrant, Berkshelf and vagrant plugins:
 
-1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+1. Install Ubuntu 14.04 and set up ssh root access
 2. Install [Vagrant](https://www.vagrantup.com/)
 3. Install Berkshelf by installing the [ChefDK](https://downloads.chef.io/chef-dk/)
 4. Install vagrant-berkshelf plugin with: `$ vagrant plugin install vagrant-berkshelf`
