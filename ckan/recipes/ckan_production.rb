@@ -23,7 +23,7 @@ template "#{node[:ckan][:config_dir]}/apache.wsgi" do
         :source_dir => node[:ckan][:virtual_env_dir]
     })
 end
-template "/etc/apache2/sites-available/ckan_#{node[:ckan][:project_name]}" do
+template "/etc/apache2/sites-available/ckan_#{node[:ckan][:project_name]}.conf" do
     source "apache_site_tmpl.erb"
     variables({
         :project_name => node[:ckan][:project_name],
@@ -38,10 +38,10 @@ template "/etc/apache2/ports.conf" do
 end
 # enable site, and disable default
 execute "enable apache site" do
-    command "sudo a2ensite ckan_#{node[:ckan][:project_name]}"
+    command "sudo a2ensite ckan_#{node[:ckan][:project_name]}.conf"
 end
 execute "disable default apache site" do
-    command "sudo a2dissite default"
+    command "sudo a2dissite 000-default"
 end
 
 # Install and configure Nginx
