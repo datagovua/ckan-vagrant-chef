@@ -19,4 +19,11 @@
         RPAFsethostname On
         RPAFproxy_ips 127.0.0.1
     </IfModule>
+
+    <Directory <%= @config_dir %>>
+        <Files apache.wsgi>
+            Require all granted
+        </Files>
+    </Directory>
+
 </VirtualHost>

@@ -1,8 +1,8 @@
 # for development deploys using Vagrant, `[:ckan][:user]` must be 'vagrant' to ensure
 # synced_folders have correct permissions
-default[:ckan][:user] = "vagrant"
+default[:ckan][:user] = "ckan"
 default[:ckan][:project_name] = "default"
-default[:ckan][:site_url] = "http://default.ckanhosted.dev"
+default[:ckan][:site_url] = "http://ckan.data.gov.ua"
 default[:ckan][:solr_url] = "http://127.0.0.1:8983/solr"
 default[:ckan][:sql_password] = "pass"
 default[:ckan][:sql_user] = "ckan_#{default[:ckan][:project_name]}"
@@ -19,5 +19,5 @@ default[:repository][:url] = "https://github.com/ckan/ckan.git"
 default[:repository][:commit] = "release-v2.3"
 
 # Apache config for production
-default[:apache][:server_name] = "default.ckanhosted.dev"
-default[:apache][:server_alias] = "www.default.ckanhosted.dev"
+default[:apache][:server_name] = "ckan.data.gov.ua"
+default[:apache][:server_alias] = "www.ckan.data.gov.ua"

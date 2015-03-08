@@ -25,6 +25,10 @@ directory ENV['VIRTUAL_ENV'] do
   action :create
 end
 
+execute "chown virtual env" do
+  command "chown -R #{node[:ckan][:user]}:#{node[:ckan][:user]} #{ENV['VIRTUAL_ENV']}"
+end
+
 # Create python virtualenv
 python_virtualenv ENV['VIRTUAL_ENV'] do
   interpreter "python2.7"
@@ -40,6 +44,17 @@ directory SOURCE_DIR do
   group node[:ckan][:user]
   recursive true
   action :create
+end
+
+directory CKAN_DIR do
+  owner node[:ckan][:user]
+  group node[:ckan][:user]
+  recursive true
+  action :create
+end
+
+execute "chown ckan dir" do
+  command "chown -R #{node[:ckan][:user]}:#{node[:ckan][:user]} #{CKAN_DIR}"
 end
 
 # Clone CKAN into source directory
@@ -88,6 +103,10 @@ directory node[:ckan][:config_dir] do
   group node[:ckan][:user]
   recursive true
   action :create
+end
+
+execute "chown config dir" do
+  command "chown -R #{node[:ckan][:user]}:#{node[:ckan][:user]} #{node[:ckan][:config_dir]}"
 end
 
 # Create configuration file in CKAN directory
