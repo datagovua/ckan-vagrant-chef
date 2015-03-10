@@ -23,5 +23,5 @@ default[:repository][:url] = "https://github.com/ckan/ckan.git"
 default[:repository][:commit] = "release-v2.3"
 
 # Apache config for production
-default[:apache][:server_name] = "ckan.data.gov.ua"
-default[:apache][:server_alias] = "www.ckan.data.gov.ua"
+default[:apache][:server_name] = "data-gov-ua.org"
+default[:apache][:server_alias] = "www.data-gov-ua.org"
