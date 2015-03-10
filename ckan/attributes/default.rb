@@ -2,7 +2,7 @@
 # synced_folders have correct permissions
 default[:ckan][:user] = "ckan"
 default[:ckan][:project_name] = "default"
-default[:ckan][:site_url] = "http://ckan.data.gov.ua"
+default[:ckan][:site_url] = "http://data-gov-ua.org"
 default[:ckan][:solr_url] = "http://127.0.0.1:8983/solr"
 default[:ckan][:sql_password] = "pass"
 default[:ckan][:sql_user] = "ckan_#{default[:ckan][:project_name]}"
@@ -13,6 +13,10 @@ default[:ckan][:file_storage_dir] = "/var/lib/ckan/#{default[:ckan][:project_nam
 
 default[:ckan][:datastore][:sql_user] = "datastore_#{default[:ckan][:project_name]}"  # readonly db user
 default[:ckan][:datastore][:sql_db_name] = "datastore_#{default[:ckan][:project_name]}"
+
+default[:datapusher][:virtual_env_dir] = "/usr/lib/datapusher/#{default[:ckan][:project_name]}"
+default[:datapusher][:repository][:url] = "https://github.com/ckan/datapusher.git"
+default[:datapusher][:repository][:commit] = "stable"
 
 # The CKAN version to install.
 default[:repository][:url] = "https://github.com/ckan/ckan.git"
