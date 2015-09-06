@@ -10,6 +10,13 @@ execute "install apt packages" do
   command "sudo apt-get -y install python-dev python-virtualenv build-essential libxslt1-dev libxml2-dev git"
 end
 
+directory ENV['VIRTUAL_ENV'] do
+  owner node[:ckan][:user]
+  group node[:ckan][:user]
+  recursive true
+  action :create
+end
+
 execute "chown virtual env" do
   command "chown -R #{node[:ckan][:user]}:#{node[:ckan][:user]} #{ENV['VIRTUAL_ENV']}"
 end

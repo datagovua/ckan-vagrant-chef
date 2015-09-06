@@ -22,8 +22,8 @@ Vagrant.configure(2) do |config|
 
 
   config.vm.provider :managed do |managed, override|
-    managed.server = "178.62.104.159"
-    override.ssh.username = "root"
+    managed.server = "54.93.77.185"
+    override.ssh.username = "ubuntu"
     override.ssh.private_key_path = "~/.ssh/id_rsa"
   end
 

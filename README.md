@@ -9,11 +9,12 @@ Sets up remote machine to run Postgres 9.4, Solr, Jetty, CKAN (2.3) and Datastor
 Install Ubuntu, Vagrant, Berkshelf and vagrant plugins:
 
 1. Install Ubuntu 14.04 and set up ssh root access
-2. Install [Vagrant](https://www.vagrantup.com/)
+2. Install [Vagrant](https://www.vagrantup.com/) v1.7.x
 3. Install Berkshelf by installing the [ChefDK](https://downloads.chef.io/chef-dk/)
 4. Install vagrant-berkshelf plugin with: `$ vagrant plugin install vagrant-berkshelf`
 5. Install vagrant-hostmanager plugin with: `$ vagrant plugin install vagrant-hostmanager`
 6. Install vagrant-managed-servers plugin with: `vagrant plugin install vagrant-managed-servers`
+7. `vagrant init tknerr/managed-server-dummy; vagrant up --provider managed`
 
 Clone this repository, then:
 
@@ -44,6 +45,7 @@ $ node ./bin/less
 ```
 
 ### For Production
+
 
 Add `recipe[ckan::ckan_production]` to your run_list to install the dependencies needed for a production instance of CKAN that uses Apache/Nginx.
 

@@ -1,8 +1,12 @@
 #/bin/bash
 
 
-# scp etc
+# HOST=root@178.62.104.159
+# scp etc/ckan
+scp $HOST:/etc/ckan/default/apache.wsgi synced_folders/config/
 # scp /var
+scp -r $HOST:/var/lib/ckan/default/* synced_folders/file_storage/
+
 # scp /usr
 
 # make backup
